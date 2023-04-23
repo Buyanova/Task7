@@ -5,7 +5,7 @@ namespace BusinessLogic.Tests
         [Fact]
         public void Test1()
         {
-            
+
         }
     }
 }

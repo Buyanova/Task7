@@ -27,20 +27,45 @@ namespace BusinessLogic.Services
             }
             public async Task Create(Tovar model)
             {
+            if (model == null)
+            {
+                throw new ArgumentNullException(nameof(model));
+            }
+
+            if (string.IsNullOrEmpty(model.Name))
+            {
+                throw new ArgumentException(nameof(model.Name));
+            }
+
+            if (model.Kolichestvo==0)
+            {
+                throw new ArgumentException(nameof(model.Kolichestvo));
+            }
+
+            if (model.Price==0)
+            {
+                throw new ArgumentException(nameof(model.Price));
+            }
+
+            if (string.IsNullOrEmpty(model.OpisanieTovara))
+            {
+                throw new ArgumentException(nameof(model.OpisanieTovara));
+            }
+
                 await _repositoryWrapper.Tovar.Create(model);
-                _repositoryWrapper.Save();
+                await _repositoryWrapper.Save();
             }
             public async Task Update(Tovar model)
             {
-                _repositoryWrapper.Tovar.Update(model);
-                _repositoryWrapper.Save();
+                await _repositoryWrapper.Tovar.Update(model);
+                await _repositoryWrapper.Save();
             }
             public async Task Delete(int id)
             {
                 var user = await _repositoryWrapper.Tovar
                 .FindByCondition(x => x.IdTovara == id);
-                _repositoryWrapper.Tovar.Delete(user.First());
-                _repositoryWrapper.Save();
+            await _repositoryWrapper.Tovar.Delete(user.First());
+            await _repositoryWrapper.Save();
         }
         }
     }

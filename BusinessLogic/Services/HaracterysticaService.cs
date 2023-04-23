@@ -74,8 +74,8 @@ namespace BusinessLogic.Services
         {
             var user = await _repositoryWrapper.Haracterystica
             .FindByCondition(x => x.IdKategorii == id);
-            _repositoryWrapper.Haracterystica.Delete(user.First());
-            _repositoryWrapper.Save();
+            await _repositoryWrapper.Haracterystica.Delete(user.First());
+            await _repositoryWrapper.Save();
         }
     }
 }

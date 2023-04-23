@@ -27,20 +27,46 @@ namespace BusinessLogic.Services
         }
         public async Task Create(Zakaz model)
         {
+
+            if (model == null)
+            {
+                throw new ArgumentNullException(nameof(model));
+            }
+
+            if (model.DateZakaz == null)
+            {
+                throw new ArgumentException(nameof(model.DateZakaz));
+            }
+
+            if (model.SrokSborki == 0)
+            {
+                throw new ArgumentException(nameof(model.SrokSborki));
+            }
+
+            if (string.IsNullOrEmpty(model.SposobDostavci))
+            {
+                throw new ArgumentException(nameof(model.SposobDostavci));
+            }
+
+            if (string.IsNullOrEmpty(model.StatusDostavci))
+            {
+                throw new ArgumentException(nameof(model.StatusDostavci));
+            }
+
             await _repositoryWrapper.Zakaz.Create(model);
-            _repositoryWrapper.Save();
+            await _repositoryWrapper.Save();
         }
         public async Task Update(Zakaz model)
         {
-            _repositoryWrapper.Zakaz.Update(model);
-            _repositoryWrapper.Save();
+            await _repositoryWrapper.Zakaz.Update(model);
+            await _repositoryWrapper.Save();
         }
         public async Task Delete(int id)
         {
             var user = await _repositoryWrapper.Zakaz
             .FindByCondition(x => x.IdZakaz == id);
-            _repositoryWrapper.Zakaz.Delete(user.First());
-            _repositoryWrapper.Save();
+            await _repositoryWrapper.Zakaz.Delete(user.First());
+            await _repositoryWrapper.Save();
         }
     }
 }

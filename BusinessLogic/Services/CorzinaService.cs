@@ -27,6 +27,31 @@ namespace BusinessLogic.Services
         }
         public async Task Create(Corzina model)
         {
+            if (model == null)
+            {
+                throw new ArgumentNullException(nameof(model));
+            }
+
+            if (model.Price == 0)
+            {
+                throw new ArgumentException(nameof(model.Price));
+            }
+
+            if (model.Kolichestvo == 0)
+            {
+                throw new ArgumentException(nameof(model.Kolichestvo));
+            }
+
+            if (model.Discount==0)
+            {
+                throw new ArgumentException(nameof(model.Discount));
+            }
+
+            if (string.IsNullOrEmpty(model.StatusTovara))
+            {
+                throw new ArgumentException(nameof(model.StatusTovara));
+            }
+
             await _repositoryWrapper.Corzina.Create(model);
             await _repositoryWrapper.Save();
         }
