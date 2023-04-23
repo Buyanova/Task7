@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BusinessLogic.Tests
-{
+{ 
     public class HaracterysticaServiceTest
     {
         private readonly HaracterysticaService service;
