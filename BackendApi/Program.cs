@@ -8,7 +8,7 @@ using Microsoft.OpenApi.Models;
 using System.Reflection;
 
 namespace BackendApi
-{
+{ 
     public class Program
     {
         public static void Main(string[] args)
