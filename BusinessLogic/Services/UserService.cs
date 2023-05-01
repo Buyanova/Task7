@@ -22,12 +22,12 @@ namespace BusinessLogic.Services
         }
         public async Task Create(Pokupatel model)
         {
-            if(model == null)
+            if (model == null)
             {
                 throw new ArgumentNullException(nameof(model));
             }
 
-            if(string.IsNullOrEmpty(model.Fio))
+            if (string.IsNullOrEmpty(model.Fio))
             {
                 throw new ArgumentException(nameof(model.Fio));
             }

@@ -42,7 +42,7 @@ namespace BusinessLogic.Services
                 throw new ArgumentException(nameof(model.Kolichestvo));
             }
 
-            if (model.Discount==0)
+            if (model.Discount == 0)
             {
                 throw new ArgumentException(nameof(model.Discount));
             }

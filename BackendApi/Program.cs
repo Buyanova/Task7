@@ -25,16 +25,16 @@ namespace BackendApi
                 options.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "Интернет-магазин API",
-                    Description = "Краткое описание вашего API",
+                    Title = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ API",
+                    Description = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ API",
                     Contact = new OpenApiContact
                     {
-                        Name = "Пример контакта",
+                        Name = "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ",
                         Url = new Uri("https://example.com/contact")
                     },
                     License = new OpenApiLicense
                     {
-                        Name = "Пример лицензии",
+                        Name = "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ",
                         Url = new Uri("https://example.com/license")
                     }
                 });
@@ -73,7 +73,7 @@ namespace BackendApi
 
             app.Run();
 
-            
+
 
         }
     }

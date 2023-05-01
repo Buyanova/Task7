@@ -8,25 +8,25 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic.Services
 {
-     public class TovarService : ITovarService
+    public class TovarService : ITovarService
+    {
+        private IRepositoryWrapper _repositoryWrapper;
+        public TovarService(IRepositoryWrapper repositoryWrapper)
         {
-            private IRepositoryWrapper _repositoryWrapper;
-            public TovarService(IRepositoryWrapper repositoryWrapper)
-            {
-                _repositoryWrapper = repositoryWrapper;
-            }
-            public async Task<List<Tovar>> GetAll()
-            {
-                return await _repositoryWrapper.Tovar.FindAll();
-            }
-            public async Task<Tovar> GetById(int id, int id1)
-            {
-                var user = await _repositoryWrapper.Tovar
-                .FindByCondition(x => x.IdTovara == id && x.IdKategorii == id1);
-                return user.First();
-            }
-            public async Task Create(Tovar model)
-            {
+            _repositoryWrapper = repositoryWrapper;
+        }
+        public async Task<List<Tovar>> GetAll()
+        {
+            return await _repositoryWrapper.Tovar.FindAll();
+        }
+        public async Task<Tovar> GetById(int id, int id1)
+        {
+            var user = await _repositoryWrapper.Tovar
+            .FindByCondition(x => x.IdTovara == id && x.IdKategorii == id1);
+            return user.First();
+        }
+        public async Task Create(Tovar model)
+        {
             if (model == null)
             {
                 throw new ArgumentNullException(nameof(model));
@@ -37,12 +37,12 @@ namespace BusinessLogic.Services
                 throw new ArgumentException(nameof(model.Name));
             }
 
-            if (model.Kolichestvo==0)
+            if (model.Kolichestvo == 0)
             {
                 throw new ArgumentException(nameof(model.Kolichestvo));
             }
 
-            if (model.Price==0)
+            if (model.Price == 0)
             {
                 throw new ArgumentException(nameof(model.Price));
             }
@@ -52,20 +52,20 @@ namespace BusinessLogic.Services
                 throw new ArgumentException(nameof(model.OpisanieTovara));
             }
 
-                await _repositoryWrapper.Tovar.Create(model);
-                await _repositoryWrapper.Save();
-            }
-            public async Task Update(Tovar model)
-            {
-                await _repositoryWrapper.Tovar.Update(model);
-                await _repositoryWrapper.Save();
-            }
-            public async Task Delete(int id)
-            {
-                var user = await _repositoryWrapper.Tovar
-                .FindByCondition(x => x.IdTovara == id);
+            await _repositoryWrapper.Tovar.Create(model);
+            await _repositoryWrapper.Save();
+        }
+        public async Task Update(Tovar model)
+        {
+            await _repositoryWrapper.Tovar.Update(model);
+            await _repositoryWrapper.Save();
+        }
+        public async Task Delete(int id)
+        {
+            var user = await _repositoryWrapper.Tovar
+            .FindByCondition(x => x.IdTovara == id);
             await _repositoryWrapper.Tovar.Delete(user.First());
             await _repositoryWrapper.Save();
         }
-        }
     }
+}

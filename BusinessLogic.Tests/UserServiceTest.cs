@@ -47,7 +47,7 @@ namespace BusinessLogic.Tests
             };
         }
         [Theory]
-        [MemberData(nameof(GetIncorrectUsers))] 
+        [MemberData(nameof(GetIncorrectUsers))]
         public async Task CreateAsyncNewUserShouldNotCreateNewUser(Pokupatel pokupatel)
         {
             // arrange
