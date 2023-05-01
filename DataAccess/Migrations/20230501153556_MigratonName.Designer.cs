@@ -4,6 +4,7 @@ using DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(InternetstoreContext))]
-    partial class ИнтернетмагазинContextModelSnapshot : ModelSnapshot
+    [Migration("20230501153556_MigratonName")]
+    partial class MigratonName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -156,10 +158,6 @@ namespace DataAccess.Migrations
                     b.Property<int>("IdKategorii")
                         .HasColumnType("int")
                         .HasColumnName("Id_kategorii");
-
-                    b.Property<byte[]>("Image")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
 
                     b.Property<int>("Kolichestvo")
                         .HasColumnType("int");
